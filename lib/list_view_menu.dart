@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+class ListMenu{
+
+}
 class ListViewMenu extends StatelessWidget {
   const ListViewMenu({Key? key}) : super(key: key);
 
@@ -10,6 +13,7 @@ class ListViewMenu extends StatelessWidget {
       ),
       body: Container(
         child: ListView.separated(
+          padding: EdgeInsets.all(5),
           itemBuilder: (context, index) {
             return ListTile(
               title: Text("MENU-1"),
@@ -24,7 +28,7 @@ class ListViewMenu extends StatelessWidget {
             );
           },
           separatorBuilder: (_, index) {
-            return Divider();
+            return Divider(color: Colors.red);
           },
           itemCount: 4,
         ),
