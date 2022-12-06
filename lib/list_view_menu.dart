@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 
-class ListMenu{
+class ListMenu {
+  final String? title;
+  final String? subtitle;
+  final IconData? icon;
 
+  const ListMenu({this.title, this.subtitle, this.icon});
 }
+
+List<ListMenu> menus = [
+  const ListMenu(title: 'MENU-1', subtitle: 'SUB-1', icon: Icons.person),
+  const ListMenu(title: 'MENU-2', subtitle: 'SUB-2', icon: Icons.person_add),
+  const ListMenu(title: 'MENU-3', subtitle: 'SUB-3', icon: Icons.wifi),
+  const ListMenu(title: 'MENU-4', subtitle: 'SUB-4', icon: Icons.history_edu),
+  const ListMenu(title: 'MENU-5', subtitle: 'SUB-5', icon: Icons.business),
+];
+
 class ListViewMenu extends StatelessWidget {
   const ListViewMenu({Key? key}) : super(key: key);
 
@@ -16,21 +29,21 @@ class ListViewMenu extends StatelessWidget {
           padding: EdgeInsets.all(5),
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text("MENU-1"),
-              subtitle: Text("SUB-1"),
+              title: Text('${menus[index].title}'),
+              subtitle: Text('${menus[index].subtitle}'),
               leading: CircleAvatar(
-                child: Icon(Icons.person),
+                child: Icon(menus[index].icon),
               ),
               trailing: Icon(Icons.arrow_right),
               onTap: () {
-                debugPrint("MENU-1");
+                debugPrint(menus[index].title);
               },
             );
           },
           separatorBuilder: (_, index) {
             return Divider(color: Colors.red);
           },
-          itemCount: 4,
+          itemCount: menus.length,
         ),
       ),
     );
